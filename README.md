@@ -1,2 +1,2 @@
 # IA-Tareas 🐒
-Tareas de inteligencia artificial 
+Tareas de inteligencia artificial.

@@ -41,6 +41,7 @@ for i in range(rows_mapa):
     r=input()
     grid.append(r)
 
+matrix=[]
 print(x_pacman)
 print(y_pacman)
 print(x_comida)
@@ -54,5 +55,6 @@ raiz.get()
 
 for x in grid:
     print(x)
-    print(list(x))
+    matrix.append(list(x))
 
+print(matrix)

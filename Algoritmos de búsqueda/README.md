@@ -3,11 +3,11 @@
 Búsqueda en profundidad.
 
 Como entrada tenemos el modelo de grafo:  
- `graph = {'A': set(['C', 'B']),  
-        'B': set(['A', 'D', 'E']),  
-         'C': set(['A']),  
-         'D': set(['B']),  
-         'E': set(['B'])}  `
+ >`graph = {'A': set(['C', 'B']),  
+ >       'B': set(['A', 'D', 'E']),  
+ >        'C': set(['A']),  
+ >        'D': set(['B']),  
+ >        'E': set(['B'])}  `
 
 Luego realizamos la búsqueda:  `dfs(graph, 'A')` esta ejecución empieza en el nodo `A`.
 

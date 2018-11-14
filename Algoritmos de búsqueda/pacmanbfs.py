@@ -1,41 +1,22 @@
-
-#Definicion de la clase vertice
+lista = list()
 class Vertex:
     def __init__(self,x,y,value):
         self.x = x
         self.y = y
-        self.neighbors = list()
         self.value = value
-        self.visited = False
-    #Agregar a los vecinos
-    
-    def add_neighbor(self, v):
-        if v not in self.neighbors:
-            self.neighbors.append(v)
-            #self.neighbors.sort()
-    def get_x(self):
-        return self.x
-    def get_y(self):
-        return self.y
-    def get_visited(self):
-        return self.visited    
-    #def print_neighbor(self):
-        #print(self.name, " Mis vecinos ",self.neighbors)          
-
+     
 def bfs(matriz,raiz,visitados,x_comida,y_comida):
-    print("bfs")
-    print(matriz)
     queue = list()
     raiz.visited =True
     visitados[raiz.x][raiz.y] = 1
-    print(visitados)
     queue.append(raiz)
     count = 0
-
+    
     while len(queue) > 0:
         elemento = queue.pop(0)
         count = count + 1
-        print(elemento.x,elemento.y)
+        
+        lista.append(elemento)
 
         if(elemento.x == x_comida and elemento.y == y_comida ):
             break
@@ -59,10 +40,7 @@ def bfs(matriz,raiz,visitados,x_comida,y_comida):
             e = Vertex(elemento.x+1,elemento.y,matriz[elemento.x+1][elemento.y])
             visitados[elemento.x+1][elemento.y] = 1
             queue.append(e)
-        
     return count
-        
-#Lectura de variables
 
 pacman =  input().strip()
 comida =  input().strip()
@@ -87,27 +65,13 @@ for i in range(rows_mapa):
     grid.append(r)
 
 matrix=[]
-#print(x_pacman)
-#print(y_pacman)
-#print(x_comida)
-#print(y_comida)
-#print(rows_mapa)
-#print(colums_mapa)
-#print(grid)
 
 for x in grid:
-    #print(x)
     matrix.append(list(x))
 
-#print(matrix)
-
-
 raiz = Vertex(x_pacman,y_pacman,'P')
-#print(raiz.x)
-#print(raiz.y)
-
 visitados = [[0 for col in range(colums_mapa)] for row in range(rows_mapa)]
 
-#print(visitados)
-
 print(bfs(matrix,raiz,visitados,x_comida,y_comida))
+for elemento in lista:
+    print(elemento.x,elemento.y)

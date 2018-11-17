@@ -155,13 +155,17 @@ while (isEnd == False):
 
     openList.pop(0)
 
-
-print(position)
+output = []
+output.append(position)
+#print(position)
 while(position != start):
     parent = [d for d in goBack if d['pos'] in [position]]
-    position = parent[0]['parent'] 
-    print(position)
+    position = parent[0]['parent']
+    output.append(position) 
+    #print(position)
 
+print(len(output))
+print(output[::-1])
 #temp = openList.pop(0)
 #print(temp)
 #print(temp[0]['cost'])

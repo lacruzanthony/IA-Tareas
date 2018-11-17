@@ -2,25 +2,41 @@ import time
 import math
 
 
+pacman =  input().strip()
+comida =  input().strip()
+mapa   =  input().strip()
 
-matrix = [
-['*', '-', '-', '-'],
-['%', '-', '%', '-'],
-['-', '-', '%', '%'],
-['-', '%', '%', 'P'],
-['-', '-', '-', '-']
-]
+coordenadas_pacman = pacman.split()
+coordenadas_comida = comida.split()
+size_mapa = mapa.split()
 
+x_pacman = int(coordenadas_pacman[0])
+y_pacman = int(coordenadas_pacman[1])
 
+x_comida = int(coordenadas_comida[0])
+y_comida = int(coordenadas_comida[1])
+
+rows_mapa = int(size_mapa[0])
+colums_mapa =int(size_mapa[1])
+
+grid=[]
+for i in range(rows_mapa):
+    r=input()
+    grid.append(r)
+
+matrix=[]
+
+for x in grid:
+    matrix.append(list(x))
 
 nextStep = []
 openList =[]
 closedList =[]
 isEnd = False
 
-start =(3,3)
+start =(x_pacman,y_pacman)
 position = start
-end = (0,0)
+end = (x_comida,y_comida)
 
 closedList.append(position)
 

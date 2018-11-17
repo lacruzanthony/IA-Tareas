@@ -2,45 +2,38 @@ import time
 import math
 from operator import itemgetter
 
-#pacman =  input().strip()
-#comida =  input().strip()
-#mapa   =  input().strip()
+pacman =  input().strip()
+comida =  input().strip()
+mapa   =  input().strip()
 
-#coordenadas_pacman = pacman.split()
-#coordenadas_comida = comida.split()
-#size_mapa = mapa.split()
+coordenadas_pacman = pacman.split()
+coordenadas_comida = comida.split()
+size_mapa = mapa.split()
 
-#x_pacman = int(coordenadas_pacman[0])
-#y_pacman = int(coordenadas_pacman[1])
+x_pacman = int(coordenadas_pacman[0])
+y_pacman = int(coordenadas_pacman[1])
 
-#x_comida = int(coordenadas_comida[0])
-#y_comida = int(coordenadas_comida[1])
+x_comida = int(coordenadas_comida[0])
+y_comida = int(coordenadas_comida[1])
 
-#rows_mapa = int(size_mapa[0])
-#colums_mapa =int(size_mapa[1])
+rows_mapa = int(size_mapa[0])
+colums_mapa =int(size_mapa[1])
 
-grid=[
-['*', '-', '-'],
-['-', '%', '-'],
-['-', '%', '-'],
-['%', '-', '-'],
-['%', '-', 'P'],
-]
-#for i in range(rows_mapa):
-    #r=input()
-    #grid.append(r)
+matiz=[]
+for i in range(rows_mapa):
+    r=input()
+    matiz.append(r)
 
-#for x in grid:
-    #grid.append(list(x))
+grid=[]
 
-#start =(x_pacman,y_pacman)
-#position = start
-#end = (x_comida,y_comida)
+for x in matiz:
+    grid.append(list(x))
 
-start= (4,2)
-end = (0,0)
-rows_mapa = 5
-colums_mapa = 3
+
+start =(x_pacman,y_pacman)
+position = start
+end = (x_comida,y_comida)
+
 neighbors = []
 openList = []
 closedList =[]

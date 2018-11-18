@@ -24,11 +24,15 @@ def solved(raiz,numero):
         count = count + 1
         elemento = queue.pop(0)
         
+        print("(")
+        for x in queue:
+            print(x.x)
+        print(")")
         print(count,elemento.x)
         if elemento.x == numero:
             print("Encontrado")
             break
-        if elemento.x > 2147483647:
+        if(abs(elemento.x) > (2 ** 31 - 1)):
             continue
         vertex_1 = Vertex(raizcuadrada(elemento.x))
         vertex_2 = Vertex(redondeo(elemento.x))
@@ -54,7 +58,7 @@ def solved(raiz,numero):
 
 
 #numero = int(input())
-numero = 64
+numero = 24
 raiz = Vertex(4)
 
 solved(raiz,numero)

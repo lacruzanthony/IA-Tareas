@@ -165,7 +165,11 @@ while(position != start):
     #print(position)
 
 print(len(output))
-print(output[::-1])
+output = output[::-1]
+
+for obj in output:
+    print(obj[0])
+    print(obj[1])
 #temp = openList.pop(0)
 #print(temp)
 #print(temp[0]['cost'])

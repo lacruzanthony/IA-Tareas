@@ -168,17 +168,5 @@ print(len(output))
 output = output[::-1]
 
 for obj in output:
-    print(obj[0])
-    print(obj[1])
-#temp = openList.pop(0)
-#print(temp)
-#print(temp[0]['cost'])
-
-
-
-
-
-
-#print(openList)
-#print(min(openList))
-        
+    print(obj[0],obj[1])
+print(x_comida,y_comida)

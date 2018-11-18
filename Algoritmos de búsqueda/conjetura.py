@@ -4,32 +4,48 @@ class Vertex:
     def __init__(self,x):
         self.x = x
         self.vecinos  = list()
-    def aplicar(self,i):
-        if i == 1:
-            self.x = redondeo(self.x)
-        if i == 2:
-            self.x = raizcuadrada(self.x)
-        if i == 3:
-            self.x = factorial(self.x)
+        self.aplicaciones = list()
+
 
 def raizcuadrada(x):
     return math.sqrt(x)
 def redondeo(x):
     return math.ceil(x)
 def factorial(x):
+    x = math.ceil(x)
     return math.factorial(x)
         
 
 def solved(raiz,numero):
-    numero_niveles = 1
-    for i in range(1,4):
-        v = Vertex(i)
-        v.aplicar(i)
-        raiz.vecinos.append(v)
+    queue = list()
+    queue.append(raiz)
+    count = 0
+    while len(queue) > 0:
+        count = count + 1
+        elemento = queue.pop(0)
+        
+        print(count,elemento.x)
+        if elemento.x == numero:
+            print("Encontrado")
+            break
+        if elemento.x > 2147483647:
+            continue
+        vertex_1 = Vertex(raizcuadrada(elemento.x))
+        vertex_2 = Vertex(redondeo(elemento.x))
+        vertex_3 = Vertex(factorial(elemento.x))
+        queue.append(vertex_1)
+        queue.append(vertex_2)
+        queue.append(vertex_3)
+
+    #numero_niveles = 1
+    #for i in range(1,4):
+        #v = Vertex(i)
+        #v.aplicar(i)
+        #raiz.vecinos.append(v)
 
 
-    for i in range(1,4):
-        numero_niveles += pow(3,i)
+    #for i in range(1,4):
+        #numero_niveles += pow(3,i)
         
     
 
@@ -38,7 +54,7 @@ def solved(raiz,numero):
 
 
 #numero = int(input())
-numero = 2
+numero = 64
 raiz = Vertex(4)
 
 solved(raiz,numero)

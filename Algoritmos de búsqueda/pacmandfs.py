@@ -27,11 +27,11 @@ def dfs(filas_mapa, columnas_mapa, x_pacman, y_pacman, x_comida, y_comida, matri
             movimientoValido.append("IZQUIERDA")
             visitados[x_pacman][y_pacman-1] = True
         
-        if(y_pacman+1 >= 0 and matrix[x_pacman][y_pacman+1] != '%' and visitados[x_pacman][y_pacman+1] == False):
+        if(y_pacman+1 <= columnas_mapa and matrix[x_pacman][y_pacman+1] != '%' and visitados[x_pacman][y_pacman+1] == False):
             movimientoValido.append("DERECHA")
             visitados[x_pacman][y_pacman+1] = True
         
-        if(x_pacman+1 >= 0 and matrix[x_pacman+1][y_pacman] != '%' and visitados[x_pacman+1][y_pacman] == False):
+        if(x_pacman+1 <= filas_mapa and matrix[x_pacman+1][y_pacman] != '%' and visitados[x_pacman+1][y_pacman] == False):
             movimientoValido.append("ABAJO")
             visitados[x_pacman+1][y_pacman] = True
     
@@ -45,36 +45,37 @@ def dfs(filas_mapa, columnas_mapa, x_pacman, y_pacman, x_comida, y_comida, matri
                 caminoFinal.append(str(x_pacman) + " " + str(y_pacman))
                 movimientoValido.clear 
 
-            if( not movimientoValido and encontrado == False):
+            if(movimientoValido and encontrado == False):
                 direccion = movimientoValido.pop()
 
         if(direccion == "DERECHA" and encontrado == False) :
-            encontrado = dfs(filas_mapa, columnas_mapa, x_pacman, y_pacman + 1, x_comida, y_comida, matrix, encontrado)
+            encontrado = dfs(filas_mapa, columnas_mapa, x_pacman, y_pacman+1, x_comida, y_comida, matrix, encontrado)
             if encontrado :
                 caminoFinal.append(str(x_pacman) + " " + str(y_pacman))
                 movimientoValido.clear
 
-            if(not movimientoValido and not encontrado) :
+            if(movimientoValido and not encontrado) :
                 direccion = movimientoValido.pop()
         
         if (direccion == "IZQUIERDA" and not encontrado) :
-            encontrado = dfs (filas_mapa, columnas_mapa, x_pacman, y_pacman - 1, x_comida, y_comida, matrix, encontrado)
+            encontrado = dfs (filas_mapa, columnas_mapa, x_pacman, y_pacman-1, x_comida, y_comida, matrix, encontrado)
             if encontrado :
                 caminoFinal.append(str(x_pacman) + " " + str(y_pacman))
                 movimientoValido.clear
             
-            if (not movimientoValido and not encontrado) :
+            if (movimientoValido and not encontrado) :
                 direccion = movimientoValido.pop()
         
         if(direccion == "ARRIBA" and not encontrado):
-            encontrado = dfs(filas_mapa, columnas_mapa, x_pacman - 1, y_pacman, x_comida, y_comida, matrix, encontrado)
+            encontrado = dfs(filas_mapa, columnas_mapa, x_pacman-1, y_pacman, x_comida, y_comida, matrix, encontrado)
 
             if encontrado :
                 caminoFinal.append(str(x_pacman) + " " + str(y_pacman))
                 movimientoValido.clear
 
-            if(not movimientoValido and not encontrado) :
+            if (movimientoValido and not encontrado) :
                 direccion = movimientoValido.pop()
+                
         
     else : 
         caminoActual.append(str(x_pacman) + " " + str(y_pacman))

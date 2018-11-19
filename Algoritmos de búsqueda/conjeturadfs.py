@@ -19,9 +19,9 @@ while (tree != [] and stop == False):
     #print(tree)
     temp = [tree[0]]
 
-    for it in range(10000000):
+    for it in range(500000):
         current = temp[0]['value']
-        print(it,current,temp[0]['op'])
+        print(it,current,len(temp[0]['op']),temp[0]['op'])
 
         if ( current == 39916800):
             continue 

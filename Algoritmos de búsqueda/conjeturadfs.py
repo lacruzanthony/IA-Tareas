@@ -1,39 +1,60 @@
 import math 
 
-tree = [{'value':24, 'op':'!'},{'value':2, 'op':'V'},{'value':4, 'op':'|'}]
-temp = []
-reach = 7
+tree = [
+    {'value':4, 'op':''}
+]
+
+bd = []
+bd.append(tree[0])
+
+reach = 8
 stop = False
+
+def factorialAprox(n):
+    #Aproximacion stirling a factoriales muy grandes
+    return n * math.log(n) - n
 
 def isStackble(value,op):
 
+
+    if not any(elm['value'] == math.sqrt(value) for elm in bd):
+        #ESTA ES LA CONDIFCION LOCA 
+        if ( math.floor(math.sqrt(value)) == reach ):
+            tree.insert(0,{'value':math.floor(math.sqrt(value)),'op':op + 'V-'})
+            bd.append({'value':math.floor(math.sqrt(value)), 'op':op + 'V-'})
+
+        tree.append({'value':math.sqrt(value), 'op':op + 'V'})
+        bd.append({'value':math.sqrt(value), 'op':op + 'V'})
+
+    if not any(elm['value'] == math.floor(value) for elm in bd):
+        tree.append({'value':math.floor(value),'op':op + '-'})
+        bd.append({'value':math.floor(value), 'op':op + '-'})
+
     if(value - math.trunc(value) == 0):
         if not (abs(math.factorial(value)) > (2 ** 31 - 1)):
-            temp.append({'value':math.factorial(value),'op':op + '!'})
+            if not any(elm['value'] == math.factorial(value) for elm in bd):
+                tree.append({'value':math.factorial(value), 'op':op + '!'})
+                bd.append({'value':math.factorial(value),'op':op + '!'})
 
-    temp.append({'value':math.sqrt(value), 'op':op + 'V'})
-    temp.append({'value':math.floor(value),'op':op + '|'})
+        elif (value < 100):
+            if not any(elm['value'] == factorialAprox(value) for elm in bd):
+                tree.append({'value':factorialAprox(value), 'op':op + '!'})
+                bd.append({'value':factorialAprox(value),'op':op + '!'})
+
 
 
 while (tree != [] and stop == False):
-    #print(tree)
-    temp = [tree[0]]
 
-    for it in range(500000):
-        current = temp[0]['value']
-        print(it,current,len(temp[0]['op']),temp[0]['op'])
+    current = tree[0]['value']
+    print(current,len(tree[0]['op']),tree[0]['op'])
 
-        if ( current == 39916800):
-            continue 
+    if(current == reach):
+        print('encontrado')
+        stop = True
+        break 
 
-        if(current == reach):
-            print('encontrado')
-            stop = True
-            break 
-
-        isStackble(current, temp[0]['op'])
-
-        #print(temp)
-        temp.pop(0)
+    isStackble(current, tree[0]['op'])
         
     tree.pop(0)
+
+print(bd)

@@ -16,16 +16,22 @@ def factorialAprox(n):
 
 def isStackble(value,op):
 
-
+    
     if not any(elm['value'] == math.sqrt(value) for elm in bd):
         #ESTA ES LA CONDIFCION LOCA 
+        
         if ( math.floor(math.sqrt(value)) == reach ):
-            tree.insert(0,{'value':math.floor(math.sqrt(value)),'op':op + 'V-'})
+            print("Entrando aqui")
+            tree.insert(1,{'value':math.floor(math.sqrt(value)),'op':op + 'V-'})
             bd.append({'value':math.floor(math.sqrt(value)), 'op':op + 'V-'})
 
         tree.append({'value':math.sqrt(value), 'op':op + 'V'})
         bd.append({'value':math.sqrt(value), 'op':op + 'V'})
-
+        
+        if(math.floor(math.sqrt(value)) == 8):
+            print(math.floor(math.sqrt(value)))
+            print(tree)
+    
     if not any(elm['value'] == math.floor(value) for elm in bd):
         tree.append({'value':math.floor(value),'op':op + '-'})
         bd.append({'value':math.floor(value), 'op':op + '-'})
@@ -45,9 +51,12 @@ def isStackble(value,op):
 
 while (tree != [] and stop == False):
 
-    current = tree[0]['value']
-    print(current,len(tree[0]['op']),tree[0]['op'])
 
+    current = tree[0]['value']
+    
+    for i in tree:
+        print(i)
+    
     if(current == reach):
         print('encontrado')
         stop = True

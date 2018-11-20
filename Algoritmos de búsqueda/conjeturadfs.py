@@ -16,7 +16,7 @@ def factorialAprox(n):
 
 def isStackble(value,op):
 
-<<<<<<< HEAD
+
     if (math.floor(value) == reach):
         tree.insert(1,{'value':math.floor(value), 'op':op + '-'})
         bd.append({'value':math.floor(value), 'op':op + '-'})
@@ -34,27 +34,6 @@ def isStackble(value,op):
         if not any(elm['value'] == math.floor(value) for elm in bd):
             tree.append({'value':math.floor(value),'op':op + '-'})
             bd.append({'value':math.floor(value), 'op':op + '-'})
-=======
-    
-    if not any(elm['value'] == math.sqrt(value) for elm in bd):
-        #ESTA ES LA CONDIFCION LOCA 
-        
-        if ( math.floor(math.sqrt(value)) == reach ):
-            print("Entrando aqui")
-            tree.insert(1,{'value':math.floor(math.sqrt(value)),'op':op + 'V-'})
-            bd.append({'value':math.floor(math.sqrt(value)), 'op':op + 'V-'})
-
-        tree.append({'value':math.sqrt(value), 'op':op + 'V'})
-        bd.append({'value':math.sqrt(value), 'op':op + 'V'})
-        
-        if(math.floor(math.sqrt(value)) == 8):
-            print(math.floor(math.sqrt(value)))
-            print(tree)
-    
-    if not any(elm['value'] == math.floor(value) for elm in bd):
-        tree.append({'value':math.floor(value),'op':op + '-'})
-        bd.append({'value':math.floor(value), 'op':op + '-'})
->>>>>>> cc350adcc64f032e3728013f6b3b44104819ccea
 
         if(value - math.trunc(value) == 0):
             if not (abs(math.factorial(value)) > (2 ** 31 - 1)):

@@ -7,7 +7,7 @@ tree = [
 bd = []
 bd.append(tree[0])
 
-reach = 9
+reach = 11
 stop = False
 
 def factorialAprox(n):
@@ -22,8 +22,8 @@ def isStackble(value,op):
         bd.append({'value':math.floor(value), 'op':op + '-'})
 
     elif(math.sqrt(value) == reach):
-        tree.insert(1,{'value':math.sqrt(value), 'op':op + '-'})
-        bd.append({'value':math.sqrt(value), 'op':op + '-'})
+        tree.insert(1,{'value':math.sqrt(value), 'op':op + 'V'})
+        bd.append({'value':math.sqrt(value), 'op':op + 'V'})
 
     else:
 

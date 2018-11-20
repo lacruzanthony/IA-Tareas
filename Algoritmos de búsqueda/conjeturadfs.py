@@ -12,7 +12,7 @@ stop = False
 
 def factorialAprox(n):
     #Aproximacion stirling a factoriales muy grandes
-    return math.log(n)
+    return n*math.log(n)-n
 
 def isStackble(value,op):
 
@@ -50,12 +50,9 @@ def isStackble(value,op):
 
 while (tree != [] and stop == False):
 
-
     current = tree[0]['value']
-    
-    for i in tree:
-        print(i)
-    
+
+    print(current,tree[0]['op'],len(tree[0]['op']))
     if(current == reach):
         print('encontrado')
         stop = True
